@@ -2,101 +2,67 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8">
-  <title>Descoperă România</title>
-  <style>
-    body {
-      background-image: url('fundal-romania.jpg'); /* înlocuiește cu imaginea ta */
-      background-size: cover;
-      background-position: center;
-      font-family: 'Segoe UI', sans-serif;
-      color: #ffffff;
-      text-align: center;
-      padding: 50px;
-    }
-
-    h1 {
-      color: #ffcc00;
-      font-size: 36px;
-    }
-
-    section {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 30px;
-      display: inline-block;
-    }
-
-    canvas {
-      border: 2px solid #ffffff;
-      margin-top: 20px;
-    }
-
-    progress, input[type="range"] {
-      width: 80%;
-      margin: 20px auto;
-    }
-
-    label {
-      display: block;
-      margin-top: 20px;
-      font-size: 18px;
-      color: #00ffff;
-    }
-  </style>
+  <title>Sfaturi de călătorie</title>
+  <link rel="stylesheet" href="stil.css">
 </head>
 <body>
 
-  <h1>Bun venit în România!</h1>
+  <h1>Sfaturi utile pentru o vacanță în România</h1>
 
-  <section>
-    <!-- 1. CANVAS - Desen turistic -->
-    <h2>Peisaj românesc</h2>
-    <canvas id="canvas" width="300" height="150"></canvas>
-    <script>
-      const c = document.getElementById("canvas");
-      const ctx = c.getContext("2d");
+  <p>Planificarea unei călătorii în România este mai ușoară cu aceste instrumente interactive!</p>
 
-      // cer
-      ctx.fillStyle = "#87CEEB";
-      ctx.fillRect(0, 0, 300, 150);
+  <!-- 1. CANVAS -->
+  <h2>Simulare hartă turistică (Canvas)</h2>
+  <canvas id="hartaCanvas" width="400" height="150" style="border: 2px solid #ffffff;"></canvas>
+  <script>
+    const canvas = document.getElementById('hartaCanvas');
+    const ctx = canvas.getContext('2d');
 
-      // munți
-      ctx.fillStyle = "#556B2F";
-      ctx.beginPath();
-      ctx.moveTo(0, 150);
-      ctx.lineTo(75, 50);
-      ctx.lineTo(150, 150);
-      ctx.fill();
+    // fundal verde (teren)
+    ctx.fillStyle = '#006400';
+    ctx.fillRect(0, 0, 400, 150);
 
-      ctx.beginPath();
-      ctx.moveTo(150, 150);
-      ctx.lineTo(225, 60);
-      ctx.lineTo(300, 150);
-      ctx.fill();
+    // cercuri simbolice pentru orașe
+    ctx.fillStyle = '#FFD700'; // galben
+    ctx.beginPath();
+    ctx.arc(80, 80, 10, 0, 2 * Math.PI); // București
+    ctx.fill();
 
-      // soare
-      ctx.beginPath();
-      ctx.arc(250, 40, 20, 0, 2 * Math.PI);
-      ctx.fillStyle = "#FFD700";
-      ctx.fill();
-    </script>
+    ctx.beginPath();
+    ctx.arc(150, 50, 10, 0, 2 * Math.PI); // Brașov
+    ctx.fill();
 
-    <!-- 2. PROGRESS -->
-    <label for="progress">Călătoria prin România: </label>
-    <progress id="progress" value="45" max="100"></progress>
+    ctx.beginPath();
+    ctx.arc(250, 100, 10, 0, 2 * Math.PI); // Cluj
+    ctx.fill();
 
-    <!-- 3. RANGE -->
-    <label for="buget">Alege-ți bugetul de vacanță (în RON):</label>
-    <input type="range" id="buget" name="buget" min="500" max="5000" step="100" value="2000" oninput="afiseazaBuget(this.value)">
-    <div id="valoareBuget" style="color: #ffcc00; font-size: 18px;">Buget: 2000 RON</div>
+    // text
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '14px Arial';
+    ctx.fillText('București', 65, 100);
+    ctx.fillText('Brașov', 140, 70);
+    ctx.fillText('Cluj', 240, 120);
+  </script>
 
-    <script>
-      function afiseazaBuget(valoare) {
-        document.getElementById('valoareBuget').innerText = 'Buget: ' + valoare + ' RON';
-      }
-    </script>
-  </section>
+  <!-- 2. PROGRESS -->
+  <h2>Progresul planificării excursiei</h2>
+  <label for="progres">Etape parcurse:</label>
+  <progress id="progres" value="60" max="100"></progress>
+
+  <!-- 3. RANGE -->
+  <h2>Durata vacanței (zile)</h2>
+  <label for="durata">Selectează durata dorită:</label>
+  <input type="range" id="durata" name="durata" min="1" max="14" value="7" oninput="afiseazaZile(this.value)">
+  <div id="zileSelectate" style="color: #ffcc00; font-size: 18px;">Durată: 7 zile</div>
+
+  <script>
+    function afiseazaZile(zile) {
+      document.getElementById('zileSelectate').innerText = 'Durată: ' + zile + ' zile';
+    }
+  </script>
+
+  <br><br>
+  <a href="index.html">Înapoi la pagina principală</a>
 
 </body>
 </html>
