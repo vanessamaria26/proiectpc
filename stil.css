@@ -3,14 +3,37 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    color: orange; /* Poți schimba culoarea dacă vrei */
+    color: #222222; /* text general - aproape negru, lizibil */
+    font-family: Arial, sans-serif;
 }
-body {
-    background-color: lightblue;
-}
+
+/* Eliminăm al doilea body care strica fundalul */
 h1 {
-    color: red;
+    color: darkred;
+    background-color: rgba(255, 255, 255, 0.7); /* fundal semi-transparent pentru lizibilitate */
+    padding: 10px;
+    border-radius: 5px;
 }
+
+h2 {
+    color: #003366; /* un albastru închis elegant */
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 8px;
+    border-radius: 5px;
+}
+
 marquee {
-    background-color: orange;
+    background-color: #f5deb3; /* bej deschis */
+    color: #000080; /* navy */
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+a {
+    color: darkblue;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
 }
