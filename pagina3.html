@@ -2,24 +2,29 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8">
-  <title>Pagina 3 - Facilități HTML5</title>
+  <title>Descoperă România</title>
   <style>
     body {
-      background-image: url('fundal.jpg'); /* asigură-te că poza există în folder */
+      background-image: url('fundal-romania.jpg'); /* înlocuiește cu imaginea ta */
       background-size: cover;
       background-position: center;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       color: #ffffff;
       text-align: center;
       padding: 50px;
     }
 
     h1 {
-      color: #00ffff; /* scris colorat cyan */
+      color: #ffcc00;
+      font-size: 36px;
     }
 
-    h2 {
-      color: #ffcc00; /* galben deschis */
+    section {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+      display: inline-block;
     }
 
     canvas {
@@ -27,41 +32,71 @@
       margin-top: 20px;
     }
 
-    progress {
-      width: 200px;
-      height: 20px;
+    progress, input[type="range"] {
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #00ffff;
     }
   </style>
 </head>
 <body>
-  <h1>Proiect HTML5 - Pagina 3</h1>
 
-  <!-- ✅ Facilitățile HTML5 încep de aici -->
+  <h1>Bun venit în România!</h1>
 
-  <!-- 1. VIDEO -->
-  <h2>1. Video HTML5</h2>
-  <video width="320" height="240" controls>
-    <source src="video.mp4" type="video/mp4">
-    Browserul tău nu suportă redarea video.
-  </video>
+  <section>
+    <!-- 1. CANVAS - Desen turistic -->
+    <h2>Peisaj românesc</h2>
+    <canvas id="canvas" width="300" height="150"></canvas>
+    <script>
+      const c = document.getElementById("canvas");
+      const ctx = c.getContext("2d");
 
-  <!-- 2. PROGRESS -->
-  <h2>2. Bară de progres</h2>
-  <label for="progres">Progresul proiectului:</label><br>
-  <progress id="progres" value="60" max="100"></progress>
+      // cer
+      ctx.fillStyle = "#87CEEB";
+      ctx.fillRect(0, 0, 300, 150);
 
-  <!-- 3. CANVAS -->
-  <h2>3. Desen simplu cu Canvas</h2>
-  <canvas id="desen" width="200" height="100"></canvas>
-  <script>
-    const canvas = document.getElementById('desen');
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#00ff00'; // verde
-    ctx.fillRect(10, 10, 180, 80);
-    ctx.fillStyle = '#000000'; // negru
-    ctx.font = '20px Arial';
-    ctx.fillText('HTML5 Canvas', 20, 60);
-  </script>
+      // munți
+      ctx.fillStyle = "#556B2F";
+      ctx.beginPath();
+      ctx.moveTo(0, 150);
+      ctx.lineTo(75, 50);
+      ctx.lineTo(150, 150);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(150, 150);
+      ctx.lineTo(225, 60);
+      ctx.lineTo(300, 150);
+      ctx.fill();
+
+      // soare
+      ctx.beginPath();
+      ctx.arc(250, 40, 20, 0, 2 * Math.PI);
+      ctx.fillStyle = "#FFD700";
+      ctx.fill();
+    </script>
+
+    <!-- 2. PROGRESS -->
+    <label for="progress">Călătoria prin România: </label>
+    <progress id="progress" value="45" max="100"></progress>
+
+    <!-- 3. RANGE -->
+    <label for="buget">Alege-ți bugetul de vacanță (în RON):</label>
+    <input type="range" id="buget" name="buget" min="500" max="5000" step="100" value="2000" oninput="afiseazaBuget(this.value)">
+    <div id="valoareBuget" style="color: #ffcc00; font-size: 18px;">Buget: 2000 RON</div>
+
+    <script>
+      function afiseazaBuget(valoare) {
+        document.getElementById('valoareBuget').innerText = 'Buget: ' + valoare + ' RON';
+      }
+    </script>
+  </section>
 
 </body>
 </html>
