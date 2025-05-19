@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Sfaturi de călătorie</title>
+    <link rel="stylesheet" href="css/stil.css">
+    <script>
+        function salveazaNota() {
+            localStorage.setItem("nota", document.getElementById("nota").value);
+            alert("Notă salvată!");
+        }
+
+        function arataNota() {
+            alert("Nota ta: " + localStorage.getItem("nota"));
+        }
+    </script>
+</head>
+<body>
+<h2>Video demonstrativ</h2>
+<video width="320" height="240" controls>
+  <source src="sample-video.mp4" type="video/mp4">
+  Browserul tău nu suportă redarea video.
+</video>
+<h2>Canvas – Cerc roșu</h2>
+<canvas id="myCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
+
+<script>
+  var canvas = document.getElementById("myCanvas");
+  var ctx = canvas.getContext("2d");
+  ctx.beginPath();
+  ctx.arc(100, 100, 50, 0, 2 * Math.PI);
+  ctx.fillStyle = "red";
+  ctx.fill();
+</script>
+<h2>Local Storage – Salvare nume</h2>
+<input type="text" id="nume" placeholder="Scrie numele tău">
+<button onclick="salveaza()">Salvează</button>
+<p id="afisare"></p>
+
+<script>
+  function salveaza() {
+    var nume = document.getElementById("nume").value;
+    localStorage.setItem("numeSalvat", nume);
+    document.getElementById("afisare").innerText = "Salut, " + nume + "!";
+  }
+</script>
+    <h1>Sfaturi utile</h1>
+    <p>Completează nota ta despre România:</p>
+    <input type="text" id="nota">
+    <button onclick="salveazaNota()">Salvează</button>
+    <button onclick="arataNota()">Arată</button>
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+
+    <a href="index.html">Înapoi la pagina principală</a>
+</body>
+</html>
