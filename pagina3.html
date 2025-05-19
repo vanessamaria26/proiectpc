@@ -1,32 +1,54 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <title>Sfaturi de călătorie</title>
-    <link rel="stylesheet" href="stil.css">
+  <meta charset="UTF-8">
+  <title>Pagina 3 - Facilități HTML5</title>
+  <style>
+    body {
+      background-image: url('poza-ta-de-fundal.jpg');
+      background-size: cover;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #00ffff;
+    }
+
+    canvas {
+      border: 2px solid white;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
+  <h1>Facilități HTML5</h1>
 
-    <h1>Sfaturi utile pentru o călătorie reușită în România</h1>
+  <!-- ✅ 1. AUDIO -->
+  <h2>1. Redare audio</h2>
+  <audio controls>
+    <source src="audio-exemplu.mp3" type="audio/mpeg">
+    Browserul tău nu suportă elementul audio.
+  </audio>
 
-    <ul>
-        <li>Verifică prognoza meteo înainte să pleci</li>
-        <li>Folosește transportul public în orașe mari</li>
-        <li>Încărcă-ți telefonul și ia un powerbank</li>
-        <li>Respectă cultura și obiceiurile locale</li>
-        <li>Gustă din preparatele tradiționale</li>
-        <li>Nu uita documentele de călătorie</li>
-    </ul>
+  <!-- ✅ 2. CANVAS -->
+  <h2>2. Desen cu canvas</h2>
+  <canvas id="desen" width="200" height="100"></canvas>
+  <script>
+    const canvas = document.getElementById('desen');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'green';
+    ctx.fillRect(10, 10, 180, 80);
+    ctx.fillStyle = 'white';
+    ctx.font = '20px Arial';
+    ctx.fillText('Canvas!', 60, 60);
+  </script>
 
-    <h2>Recomandări pentru turiști străini</h2>
-
-    <ol>
-        <li>Schimbă bani doar în locuri autorizate</li>
-        <li>Poartă o copie a actului de identitate</li>
-        <li>Folosește aplicații precum Google Maps și Moovit</li>
-    </ol>
-
-    <a href="index.html">Înapoi la pagina principală</a>
-
+  <!-- ✅ 3. PROGRESS -->
+  <h2>3. Bară de progres</h2>
+  <label for="progres">Încărcare proiect:</label><br>
+  <progress id="progres" value="70" max="100"></progress>
 </body>
 </html>
