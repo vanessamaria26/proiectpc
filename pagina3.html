@@ -5,50 +5,63 @@
   <title>Pagina 3 - Facilități HTML5</title>
   <style>
     body {
-      background-image: url('poza-ta-de-fundal.jpg');
+      background-image: url('fundal.jpg'); /* asigură-te că poza există în folder */
       background-size: cover;
-      color: white;
+      background-position: center;
       font-family: Arial, sans-serif;
+      color: #ffffff;
       text-align: center;
-      padding: 40px;
+      padding: 50px;
     }
 
     h1 {
-      color: #00ffff;
+      color: #00ffff; /* scris colorat cyan */
+    }
+
+    h2 {
+      color: #ffcc00; /* galben deschis */
     }
 
     canvas {
-      border: 2px solid white;
+      border: 2px solid #ffffff;
       margin-top: 20px;
+    }
+
+    progress {
+      width: 200px;
+      height: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>Facilități HTML5</h1>
+  <h1>Proiect HTML5 - Pagina 3</h1>
 
-  <!-- ✅ 1. AUDIO -->
-  <h2>1. Redare audio</h2>
-  <audio controls>
-    <source src="audio-exemplu.mp3" type="audio/mpeg">
-    Browserul tău nu suportă elementul audio.
-  </audio>
+  <!-- ✅ Facilitățile HTML5 încep de aici -->
 
-  <!-- ✅ 2. CANVAS -->
-  <h2>2. Desen cu canvas</h2>
+  <!-- 1. VIDEO -->
+  <h2>1. Video HTML5</h2>
+  <video width="320" height="240" controls>
+    <source src="video.mp4" type="video/mp4">
+    Browserul tău nu suportă redarea video.
+  </video>
+
+  <!-- 2. PROGRESS -->
+  <h2>2. Bară de progres</h2>
+  <label for="progres">Progresul proiectului:</label><br>
+  <progress id="progres" value="60" max="100"></progress>
+
+  <!-- 3. CANVAS -->
+  <h2>3. Desen simplu cu Canvas</h2>
   <canvas id="desen" width="200" height="100"></canvas>
   <script>
     const canvas = document.getElementById('desen');
     const ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'green';
+    ctx.fillStyle = '#00ff00'; // verde
     ctx.fillRect(10, 10, 180, 80);
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = '#000000'; // negru
     ctx.font = '20px Arial';
-    ctx.fillText('Canvas!', 60, 60);
+    ctx.fillText('HTML5 Canvas', 20, 60);
   </script>
 
-  <!-- ✅ 3. PROGRESS -->
-  <h2>3. Bară de progres</h2>
-  <label for="progres">Încărcare proiect:</label><br>
-  <progress id="progres" value="70" max="100"></progress>
 </body>
 </html>
